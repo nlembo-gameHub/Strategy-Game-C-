@@ -11,6 +11,9 @@ public class UnitManager : MonoBehaviour
     public bool HasMoved; //Keeps track on if the unit has moved
     public float MoveSpeed; //The unit's movement speed towards the tile
 
+    public int PlayerNumber;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,16 +37,20 @@ public class UnitManager : MonoBehaviour
         }
         else
         {
-            if(GM.SelectedUnit != null) //Checking to see if there is already a currently selected unit in the game when clicking on another unit
+            if(PlayerNumber == GM.PlayerTurn)
             {
-                GM.SelectedUnit.IsSelected = false; //If so, we will deselect that unit
-            }
+                if (GM.SelectedUnit != null) //Checking to see if there is already a currently selected unit in the game when clicking on another unit
+                {
+                    GM.SelectedUnit.IsSelected = false; //If so, we will deselect that unit
+                }
 
-            IsSelected = true; //We now set the currently selected unit bool to true
-            GM.SelectedUnit = this; //And we then tell the Game Manager that this unit is now selected
-            GM.ReseltTiles(); //We reset all the tiles when we click on a non-selected unit
-            GetWalkableTiles(); //The function that tells the player what tiles are walkable to
+                IsSelected = true; //We now set the currently selected unit bool to true
+                GM.SelectedUnit = this; //And we then tell the Game Manager that this unit is now selected
+                GM.ReseltTiles(); //We reset all the tiles when we click on a non-selected unit
+                GetWalkableTiles(); //The function that tells the player what tiles are walkable to
+            }
         }
+
     }
 
     void GetWalkableTiles()
