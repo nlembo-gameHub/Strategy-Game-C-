@@ -12,6 +12,11 @@ public class TileMapper : MonoBehaviour
 
     public LayerMask ObstacleLayer; //This will act as our variable to check for any obstcles on the tile
 
+    public Color HighlightedColor;
+    public bool IsWalkable;
+
+    GameMaster GM;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +26,8 @@ public class TileMapper : MonoBehaviour
         int RandTile = Random.Range(0, TileSwapArray.Length);
         //Sets the new render graphic to that element
         RendSwapper.sprite = TileSwapArray[RandTile];
+
+        GM = FindObjectOfType<GameMaster>();
     }
 
     //// Update is called once per frame
@@ -31,7 +38,7 @@ public class TileMapper : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if(IsClear())
+        if(IsClear() == true)
         {
             transform.localScale += Vector3.one * HoverAmount; //Sizes the scale of the tile based on the hover amount to show a simple graphic 
         }
@@ -40,7 +47,7 @@ public class TileMapper : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if(IsClear())
+        if(IsClear() == true)
         {
             transform.localScale -= Vector3.one * HoverAmount; //Returnns the tile to its default height
         }
@@ -59,6 +66,26 @@ public class TileMapper : MonoBehaviour
         else
         {
             return true;
+        }
+    }
+
+    public void Hightlights()
+    {
+        RendSwapper.color = HighlightedColor;
+        IsWalkable = true;
+    }
+
+    public void Reset()
+    {
+        RendSwapper.color = Color.white;
+        IsWalkable = false;
+    }
+
+    private void OnMouseDown()
+    {
+        if(IsWalkable == true && GM.SelectedUnit != null)
+        {
+            GM.SelectedUnit.Move(this.transform.position);
         }
     }
 }
