@@ -13,11 +13,17 @@ public class UnitManager : MonoBehaviour
 
     public int PlayerNumber;
 
+    public Animator UnitAnim;
 
     // Start is called before the first frame update
     void Start()
     {
         GM = FindObjectOfType<GameMaster>(); //Us calling out to find the GameMaster Object
+        UnitAnim = GetComponent<Animator>();
+        if(UnitAnim != null)
+        {
+            UnitAnim.SetBool("IsIdle", true);
+        }
     }
 
     // Update is called once per frame
@@ -80,6 +86,8 @@ public class UnitManager : MonoBehaviour
     public void Move(Vector2 TilePos)
     {
         GM.ReseltTiles(); //We reset all the tiles right before we move to the selected location
+        UnitAnim.SetBool("IsRunning", true);
+        UnitAnim.SetBool("IsIdle", false);
         StartCoroutine(StartMovement(TilePos));
     }
     IEnumerator StartMovement(Vector2 TilePos)
@@ -96,7 +104,8 @@ public class UnitManager : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, TilePos.y), MoveSpeed * Time.deltaTime);
             yield return null;
         }
-
+        UnitAnim.SetBool("IsRunning", false);
+        UnitAnim.SetBool("IsIdle", true);
         HasMoved = true;
     }
 }
