@@ -264,8 +264,9 @@ MonoBehaviour:
   IsSelected: 0
   TileSpeed: 3
   HasMoved: 0
-  MoveSpeed: 7
+  MoveSpeed: 4
   PlayerNumber: 2
+  UnitAnim: {fileID: 0}
 --- !u!114 &8031404146718676600
 MonoBehaviour:
   m_ObjectHideFlags: 0

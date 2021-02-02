@@ -86,8 +86,6 @@ public class UnitManager : MonoBehaviour
     public void Move(Vector2 TilePos)
     {
         GM.ReseltTiles(); //We reset all the tiles right before we move to the selected location
-        UnitAnim.SetBool("IsRunning", true);
-        UnitAnim.SetBool("IsIdle", false);
         StartCoroutine(StartMovement(TilePos));
     }
     IEnumerator StartMovement(Vector2 TilePos)
@@ -96,12 +94,16 @@ public class UnitManager : MonoBehaviour
         while(transform.position.x != TilePos.x)
         {
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(TilePos.x, transform.position.y), MoveSpeed * Time.deltaTime);
+            UnitAnim.SetBool("IsRunning", true);
+            UnitAnim.SetBool("IsIdle", false);
             yield return null;
         }
         //After the x-axis is finished, the y axis is then moved to
         while (transform.position.y != TilePos.y)
         {
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, TilePos.y), MoveSpeed * Time.deltaTime);
+            UnitAnim.SetBool("IsRunning", true);
+            UnitAnim.SetBool("IsIdle", false);
             yield return null;
         }
         UnitAnim.SetBool("IsRunning", false);
