@@ -47,3 +47,6 @@ TagManager:
   - name: Cursor
     uniqueID: 1322586625
     locked: 0
+  - name: Sword Icon
+    uniqueID: 3822832825
+    locked: 0
