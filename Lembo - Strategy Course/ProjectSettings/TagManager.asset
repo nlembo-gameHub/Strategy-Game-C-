@@ -44,9 +44,12 @@ TagManager:
   - name: Unit
     uniqueID: 324606691
     locked: 0
+  - name: Sword Icon
+    uniqueID: 3822832825
+    locked: 0
   - name: Cursor
     uniqueID: 1322586625
     locked: 0
-  - name: Sword Icon
-    uniqueID: 3822832825
+  - name: Damage Icon
+    uniqueID: 2288857231
     locked: 0

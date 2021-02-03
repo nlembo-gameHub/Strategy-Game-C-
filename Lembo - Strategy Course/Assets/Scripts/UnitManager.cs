@@ -26,6 +26,10 @@ public class UnitManager : MonoBehaviour
     public int DefensneDamage;
     public int Armor;
 
+    //Damage Effects
+    public DamageIcon damagedIcon;
+    public GameObject DeathEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -86,22 +90,28 @@ public class UnitManager : MonoBehaviour
 
         if(EnemyDamage >= 1) //The reduction of the enemy health
         {
+            DamageIcon instance = Instantiate(damagedIcon, enemy.transform.position, Quaternion.identity);
+            instance.Setup(EnemyDamage);
             enemy.Health -= EnemyDamage;
         }
 
         if(MyDamage >= 1) //Reduction to this unit's health 
         {
+            DamageIcon instance = Instantiate(damagedIcon, transform.position, Quaternion.identity);
+            instance.Setup(MyDamage);
             Health -= MyDamage;
         }
 
         if(enemy.Health <= 0)
         {
+            Instantiate(DeathEffect, enemy.transform.position, Quaternion.identity);
             Destroy(enemy.gameObject);
             GetWalkableTiles();
         }
 
         if(Health <= 0)
         {
+            Instantiate(DeathEffect, transform.position, Quaternion.identity);
             GM.ReseltTiles();
             Destroy(this.gameObject);
         }
@@ -109,7 +119,7 @@ public class UnitManager : MonoBehaviour
 
     void GetWalkableTiles()
     {
-        Debug.Log("Getting Tiles");
+        //Debug.Log("Getting Tiles");
         //If the unit has already moved, we will ignore the rest of the function
         if (HasMoved == true)
         {
@@ -134,7 +144,7 @@ public class UnitManager : MonoBehaviour
     //Grabs the information of nearby units that are considered enemies to the player whose turn it is
     void GetEnemies()
     {
-        Debug.Log("Getting Enemies Function Calledd");
+        //Debug.Log("Getting Enemies Function Calledd");
         //Clears out the enemies in range list, makes sure it's update and doesn't remember enemies who may no long be in range
         EnemiesInRange.Clear();
         UnitManager[] enemies = FindObjectsOfType<UnitManager>();
@@ -144,11 +154,11 @@ public class UnitManager : MonoBehaviour
             //This is a coordinate-based system that allows us to use the absolute values for these two object positions. 
             if (Mathf.Abs(transform.position.x - enemy.transform.position.x) + Mathf.Abs(transform.position.y - enemy.transform.position.y) <= AttackRange)
             {
-                Debug.Log("Getting Enemies 1st If Function Working");
+                //Debug.Log("Getting Enemies 1st If Function Working");
                 //Checks to see if the unnits that we are adding to the list aren't our ownn ally and that the unit hasn't already attacked
                 if (enemy.PlayerNumber != GM.PlayerTurn && HasAttacked == false) 
                 {
-                    Debug.Log("Getting Enemies 2nd If Function Working");
+                    //Debug.Log("Getting Enemies 2nd If Function Working");
                     EnemiesInRange.Add(enemy);
                     enemy.WeaponIcon.SetActive(true);
                 }
