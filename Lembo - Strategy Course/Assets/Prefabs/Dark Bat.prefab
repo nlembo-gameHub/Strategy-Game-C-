@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 6211451489250572155}
   - component: {fileID: 6211451489250572156}
   - component: {fileID: 6265340156468769635}
+  - component: {fileID: 8879720658714333107}
   m_Layer: 6
   m_Name: Dark Bat
   m_TagString: Untagged
@@ -244,18 +245,20 @@ MonoBehaviour:
   TileSpeed: 6
   HasMoved: 0
   MoveSpeed: 6
-  PlayerNumber: 2
+  PlayerNumber: 1
   UnitAnim: {fileID: 0}
   AttackRange: 1
   EnemiesInRange: []
   HasAttacked: 0
   WeaponIcon: {fileID: 6211451489408997143}
-  Health: 4
-  AttackDamage: 2
+  Health: 3
+  AttackDamage: 3
   DefensneDamage: 3
   Armor: 0
   damagedIcon: {fileID: 9168410742916180803, guid: aae8bad0d7ed68041bb66cc3aa6a29ef, type: 3}
   DeathEffect: {fileID: 4199547726416965656, guid: 0ace01ed8cda8444bbdfeb95ee039783, type: 3}
+  KingHealth: {fileID: 0}
+  IsKing: 0
 --- !u!114 &6211451489250572156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,6 +291,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8879720658714333107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6211451489250572157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1356ce61c98b716449d77f0f9497c91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cost: 50
 --- !u!1 &6211451489408997143
 GameObject:
   m_ObjectHideFlags: 0

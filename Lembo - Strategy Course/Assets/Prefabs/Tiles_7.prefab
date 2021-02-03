@@ -112,8 +112,13 @@ MonoBehaviour:
   ObstacleLayer:
     serializedVersion: 2
     m_Bits: 64
+  VillageLayer:
+    serializedVersion: 2
+    m_Bits: 128
   HighlightedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   IsWalkable: 0
+  CreatableColor: {r: 0.40690637, g: 0.6792453, b: 0.5967715, a: 1}
+  IsCreatable: 0
 --- !u!61 &1598665799
 BoxCollider2D:
   m_ObjectHideFlags: 0

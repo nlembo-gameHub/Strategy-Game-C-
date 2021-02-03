@@ -426,9 +426,10 @@ GameObject:
   - component: {fileID: 8273687258291165932}
   - component: {fileID: 6533512547289796363}
   - component: {fileID: 4760763026239896658}
+  - component: {fileID: -3236324476352106599}
   m_Layer: 6
   m_Name: Dark Archer
-  m_TagString: Untagged
+  m_TagString: Archer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -506,7 +507,7 @@ MonoBehaviour:
   TileSpeed: 2
   HasMoved: 0
   MoveSpeed: 7
-  PlayerNumber: 2
+  PlayerNumber: 1
   UnitAnim: {fileID: 0}
   AttackRange: 3
   EnemiesInRange: []
@@ -518,6 +519,8 @@ MonoBehaviour:
   Armor: 1
   damagedIcon: {fileID: 9168410742916180803, guid: aae8bad0d7ed68041bb66cc3aa6a29ef, type: 3}
   DeathEffect: {fileID: 4199547726416965656, guid: 0ace01ed8cda8444bbdfeb95ee039783, type: 3}
+  KingHealth: {fileID: 0}
+  IsKing: 0
 --- !u!95 &4760763026239896658
 Animator:
   serializedVersion: 3
@@ -537,6 +540,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-3236324476352106599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7625887913534295954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1356ce61c98b716449d77f0f9497c91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cost: 70
 --- !u!1 &8352568366863638134
 GameObject:
   m_ObjectHideFlags: 0

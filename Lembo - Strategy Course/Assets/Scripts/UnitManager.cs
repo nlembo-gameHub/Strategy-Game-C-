@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class UnitManager : MonoBehaviour
 {
@@ -30,16 +32,40 @@ public class UnitManager : MonoBehaviour
     public DamageIcon damagedIcon;
     public GameObject DeathEffect;
 
+    //UI Variables
+    public TextMeshProUGUI KingHealth;
+
+    //Unit Type Flags
+    public bool IsKing;
+
     // Start is called before the first frame update
     void Start()
     {
         GM = FindObjectOfType<GameMaster>(); //Us calling out to find the GameMaster Object
+        UpdateKingHealth();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    //This Function Displays/Updates the king's health
+    public void UpdateKingHealth()
+    {
+        if(IsKing == true)
+        {
+            KingHealth.text = Health.ToString();
+        }
+    }
+
+    void OnMouseOver()
+    {
+        if(Input.GetMouseButtonDown(1))
+        {
+            GM.ToggleStatsPanel(this);
+        }
     }
 
     //Function that registers if the mouse button has been clicked
@@ -93,28 +119,59 @@ public class UnitManager : MonoBehaviour
             DamageIcon instance = Instantiate(damagedIcon, enemy.transform.position, Quaternion.identity);
             instance.Setup(EnemyDamage);
             enemy.Health -= EnemyDamage;
+            enemy.UpdateKingHealth();
         }
 
-        if(MyDamage >= 1) //Reduction to this unit's health 
+        if(transform.tag == "Archer" && enemy.tag != "Archer")
         {
-            DamageIcon instance = Instantiate(damagedIcon, transform.position, Quaternion.identity);
-            instance.Setup(MyDamage);
-            Health -= MyDamage;
+            if(Mathf.Abs(transform.position.x - enemy.transform.position.x) + Mathf.Abs(transform.position.y - enemy.transform.position.y) <= 1)
+            {
+
+                if (MyDamage >= 1) //Reduction to this unit's health 
+                {
+                    DamageIcon instance = Instantiate(damagedIcon, transform.position, Quaternion.identity);
+                    instance.Setup(MyDamage);
+                    Health -= MyDamage;
+                    UpdateKingHealth();
+                }
+            }
         }
+        else
+        {
+            if (MyDamage >= 1) //Reduction to this unit's health 
+            {
+                DamageIcon instance = Instantiate(damagedIcon, transform.position, Quaternion.identity);
+                instance.Setup(MyDamage);
+                Health -= MyDamage;
+                UpdateKingHealth();
+            }
+        }
+
+        //if(MyDamage >= 1) //Reduction to this unit's health 
+        //{
+        //    DamageIcon instance = Instantiate(damagedIcon, transform.position, Quaternion.identity);
+        //    instance.Setup(MyDamage);
+        //    Health -= MyDamage;
+        //    UpdateKingHealth();
+        //}
 
         if(enemy.Health <= 0)
         {
             Instantiate(DeathEffect, enemy.transform.position, Quaternion.identity);
             Destroy(enemy.gameObject);
             GetWalkableTiles();
+            GM.RemoveStatsPanel(enemy);
         }
 
         if(Health <= 0)
         {
             Instantiate(DeathEffect, transform.position, Quaternion.identity);
             GM.ReseltTiles();
+            GM.RemoveStatsPanel(this);
             Destroy(this.gameObject);
         }
+
+        GM.UpdateStatsPanel();
     }
 
     void GetWalkableTiles()
@@ -197,6 +254,7 @@ public class UnitManager : MonoBehaviour
         HasMoved = true;
         ResetWeaponIcons(); //Since once we finish moving, we are recalculating who we can attack
         GetEnemies(); //recalculates what enemies are in range of the moved unit
+        GM.MoveStatsPanel(this);
     }
 
    //void OnDrawGizmosSelected()

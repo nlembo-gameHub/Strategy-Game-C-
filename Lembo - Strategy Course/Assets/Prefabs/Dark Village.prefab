@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 858031430251494008}
   - component: {fileID: 6913700029255328019}
   - component: {fileID: 2181550871814116415}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4823,7 +4823,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5448054202207263604}
   - component: {fileID: 7830906357121549164}
-  m_Layer: 0
+  - component: {fileID: 1639989063}
+  - component: {fileID: 1639989062}
+  - component: {fileID: 5533493223923598394}
+  m_Layer: 7
   m_Name: Dark Village
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4897,6 +4900,60 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1639989063
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7233028970438264982}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.015956432, y: -0.11143464}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.49266568, y: 0.36443755}
+    oldSize: {x: 1.7636364, y: 1.1963637}
+    newSize: {x: 1.7636364, y: 1.1963637}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.9376877, y: 0.64913046}
+  m_EdgeRadius: 0
+--- !u!114 &1639989062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7233028970438264982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c2c3b614f7b8c2499dfe8c4195d503d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GoldProduction: 10
+  PlayerNumber: 1
+  VillageReach: 4
+--- !u!114 &5533493223923598394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7233028970438264982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1356ce61c98b716449d77f0f9497c91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cost: 100
 --- !u!1 &7601622299376586929
 GameObject:
   m_ObjectHideFlags: 0
@@ -4907,7 +4964,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7677350251736809826}
   - component: {fileID: 3565426991316565107}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
