@@ -38,6 +38,9 @@ public class UnitManager : MonoBehaviour
     //Unit Type Flags
     public bool IsKing;
 
+    //Victory Variables
+    public GameObject VictoryPanel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -157,6 +160,10 @@ public class UnitManager : MonoBehaviour
 
         if(enemy.Health <= 0)
         {
+            if (enemy.IsKing == true)
+            {
+                GM.ShowVictoryPanel(enemy.PlayerNumber);
+            }
             Instantiate(DeathEffect, enemy.transform.position, Quaternion.identity);
             Destroy(enemy.gameObject);
             GetWalkableTiles();
@@ -165,6 +172,10 @@ public class UnitManager : MonoBehaviour
 
         if(Health <= 0)
         {
+            if(IsKing == true)
+            {
+                GM.ShowVictoryPanel(PlayerNumber);
+            }
             Instantiate(DeathEffect, transform.position, Quaternion.identity);
             GM.ReseltTiles();
             GM.RemoveStatsPanel(this);

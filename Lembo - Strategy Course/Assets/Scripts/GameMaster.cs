@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour
 {
@@ -36,6 +37,10 @@ public class GameMaster : MonoBehaviour
     public TextMeshProUGUI ArmorText;
     public TextMeshProUGUI AttackDamageText;
     public TextMeshProUGUI RetaliateDamageText;
+
+    //Victory Objects
+    public GameObject BlueVictory;
+    public GameObject DarkVictory;
 
 
     public void Start()
@@ -175,6 +180,23 @@ public class GameMaster : MonoBehaviour
         }
 
         GetComponent<BarracksManager>().CloseMenus();
+    }
+
+    public void ShowVictoryPanel(int player)
+    {
+        if (player == 1)
+        {
+            BlueVictory.SetActive(true);
+        }
+        else if (player == 2)
+        {
+            DarkVictory.SetActive(true);
+        }
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
   
 }
