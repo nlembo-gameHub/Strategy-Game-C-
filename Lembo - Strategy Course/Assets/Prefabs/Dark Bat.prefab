@@ -244,21 +244,22 @@ MonoBehaviour:
   IsSelected: 0
   TileSpeed: 6
   HasMoved: 0
-  MoveSpeed: 6
+  MoveSpeed: 4
   PlayerNumber: 1
   UnitAnim: {fileID: 0}
   AttackRange: 1
   EnemiesInRange: []
   HasAttacked: 0
   WeaponIcon: {fileID: 6211451489408997143}
-  Health: 3
-  AttackDamage: 3
-  DefensneDamage: 3
+  Health: 6
+  AttackDamage: 4
+  DefensneDamage: 2
   Armor: 0
   damagedIcon: {fileID: 9168410742916180803, guid: aae8bad0d7ed68041bb66cc3aa6a29ef, type: 3}
   DeathEffect: {fileID: 4199547726416965656, guid: 0ace01ed8cda8444bbdfeb95ee039783, type: 3}
   KingHealth: {fileID: 0}
   IsKing: 0
+  VictoryPanel: {fileID: 0}
 --- !u!114 &6211451489250572156
 MonoBehaviour:
   m_ObjectHideFlags: 0
